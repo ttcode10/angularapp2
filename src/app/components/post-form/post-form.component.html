@@ -1,0 +1,13 @@
+<h2 class="mb-3">Add Post</h2>
+<div class="card card-body mb-3">
+    <div class="form-group">
+        <label>Title</label>
+        <input type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Title</label>
+        <textarea type="text" class="form-control"></textarea>
+    </div>
+    <button class="btn btn-primary" *ngIf="!isEdit">Add New Post</button>
+    <button class="btn btn-warning" *ngIf="isEdit">Submit</button>
+</div>

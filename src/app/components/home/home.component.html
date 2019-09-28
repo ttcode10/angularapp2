@@ -1,0 +1,19 @@
+<h2>Welcome</h2>
+<p>This is the Angular Front to Back application</p>
+<div class="row d-flex justify-content-between">
+    <div class="col-md-4">
+        <div class="card" [routerLink]="['/users']" routerLinkActive="router-link-active" >
+            <h5 class="text-center">Users</h5>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card" [routerLink]="['/posts']" routerLinkActive="router-link-active" >
+            <h5 class="text-center">Posts</h5>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card" [routerLink]="['/logs']" routerLinkActive="router-link-active" >
+            <h5 class="text-center">Logs</h5>
+        </div>
+    </div>
+</div>

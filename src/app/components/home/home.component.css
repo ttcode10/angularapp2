@@ -1,0 +1,13 @@
+.card {
+    height: 200px;
+}
+
+.card:hover {
+    border: 1px solid #007bff;
+    cursor: pointer;
+    color: #007bff;
+}
+
+.card h5 {
+    margin-top: 80px;
+}

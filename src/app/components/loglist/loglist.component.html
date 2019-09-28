@@ -1,0 +1,5 @@
+<div class="card card-body d-flex justify-content-between" *ngFor="let log of logs">
+    <a href="#">{{log.title}}</a>
+    <div class="mr-auto">{{log.date | date: 'short'}}</div>
+    <i class="fa fa-delete"></i>
+</div>
