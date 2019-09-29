@@ -1,5 +1,17 @@
 <h2 class="mb-3">Add Log</h2>
-<form class="card card-body form-group">
-    <input type="text" class="form-control mb-3" placeholder="Add a log">
-    <button class="btn btn-block btn-primary" type="submit">Submit</button>
+<form class="card card-body form-group" #logForm="ngForm" (ngSubmit)="onSubmit()">
+    <input
+        type="text"
+        class="form-control mb-3"
+        placeholder="Add a log"
+        #logTitle="ngModel"
+        [(ngModel)]="log.title"
+        name="title"
+        [ngClass]="{'is-invalid': logTitle?.errors && logTitle.touched}"
+        required
+        minlength="2"
+    >
+    <p [hidden]="!logTitle.errors?.required" class="invalid-feedback">Required field</p>
+    <p [hidden]="!logTitle.errors?.minlength" class="invalid-feedback">Must be at least 2 characters</p>
+    <button class="btn btn-block btn-primary" type="submit" [disabled]="!logForm.form.valid">Submit</button>
 </form>

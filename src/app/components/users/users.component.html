@@ -47,7 +47,7 @@
             <p [hidden]="userEmail.errors?.required" class="invalid-feedback">Email is required</p>
             <p [hidden]="userEmail.errors?.pattern" class="invalid-feedback">Invalid email address</p>
         </div>
-        <button class="btn btn-primary" [disabled] >Add User</button>
+        <button class="btn btn-primary" [disabled]="!userForm.form.valid" type="submit">Add User</button>
     </form>
 </div>
 

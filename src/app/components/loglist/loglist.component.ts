@@ -1,4 +1,7 @@
+import { LogService } from './../../services/log.service';
+import { Log } from './../../models/log';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-loglist',
@@ -6,10 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loglist.component.css']
 })
 export class LoglistComponent implements OnInit {
+  logs: Log[];
+  selectedLog: Log;
 
-  constructor() { }
+  constructor(private logService: LogService) { }
 
   ngOnInit() {
+    this.logService.getLogs().subscribe(logs => {
+      this.logs = logs;
+    });
+  }
+
+  selectLog(log: Log) {
+    this.logService.setFormLog(log);
+  }
+
+  deleteLog(log: Log) {
+    this.logService.deleteLog(log);
   }
 
 }
