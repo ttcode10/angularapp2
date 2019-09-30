@@ -1,4 +1,4 @@
-<h2 class="mb-3">Add Log</h2>
+<h2 class="mb-3">{{isNew ? 'Add Log' : 'Update Log'}}</h2>
 <form class="card card-body form-group" #logForm="ngForm" (ngSubmit)="onSubmit()">
     <input
         type="text"

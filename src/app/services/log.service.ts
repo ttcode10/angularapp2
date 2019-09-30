@@ -27,6 +27,12 @@ export class LogService {
   }
 
   getLogs():Observable<Log[]> {
+    this.logs = this.getFromLocalStorage();
+    if(this.logs.length > 0) {
+      this.sortLogs();
+    } else {
+      this.logs = [];
+    }
     return of(this.logs)
   }
 
@@ -39,28 +45,43 @@ export class LogService {
   }
 
   addLog(log: Log) {
-    this.logs.unshift(log)
+    this.logs.unshift(log);
+    this.saveToLocalStorage();
   }
 
   updateLog(log: Log) {
-    this.logs.forEach((cur, index) => {
-      if (cur.id == log.id) {
-        this.logs.splice(index, 1);
-        this.logs.unshift(log);
-      };
-    });
+    const index = this.logs.findIndex(cur => cur.id === log.id);
+    if (index !== -1) {
+      this.logs.splice(index, 1, log);
+      this.sortLogs();
+      this.saveToLocalStorage();
+    } else {
+      alert('Someone is updating this log, please try again later');
+    }
   }
 
   deleteLog(log: Log) {
-    this.logs.forEach((cur, index) => {
-      if (cur.id == log.id) {
-        this.logs.splice(index, 1);
-      };
-    });
+    const index = this.logs.findIndex(cur => cur.id === log.id);
+    if (index !== -1) {
+      this.logs.splice(index, 1);
+      this.saveToLocalStorage();
+    } else {
+      alert('Someone is updating this log, please try again later');
+    }
   }
 
   saveToLocalStorage() {
     localStorage.setItem('logs', JSON.stringify(this.logs));
+  }
+
+  getFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('logs'));
+  }
+
+  sortLogs() {
+    this.logs.sort((a, b) => {
+      return (Date.parse(b.date) - Date.parse(a.date));
+    });
   }
 
 }

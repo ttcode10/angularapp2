@@ -11,12 +11,14 @@ import { Component, OnInit } from '@angular/core';
 export class LoglistComponent implements OnInit {
   logs: Log[];
   selectedLog: Log;
+  loaded: boolean = false;
 
   constructor(private logService: LogService) { }
 
   ngOnInit() {
     this.logService.getLogs().subscribe(logs => {
       this.logs = logs;
+      this.loaded = true;
     });
   }
 
