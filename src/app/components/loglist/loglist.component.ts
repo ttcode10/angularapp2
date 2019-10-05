@@ -27,7 +27,10 @@ export class LoglistComponent implements OnInit {
   }
 
   deleteLog(log: Log) {
-    this.logService.deleteLog(log);
+    if(confirm(`Are you sure to delete "${log.title}" ?`)) {
+      this.logService.deleteLog(log);
+      this.logService.setFormLog({id: '', title: '', date: null});
+    }
   }
 
 }

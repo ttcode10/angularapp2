@@ -28,11 +28,21 @@ export class UserService {
   }
 
   getUsers():Observable<User[]> {
+    this.users = this.getFromLocalStorage();
     return of(this.users);
   }
 
   addUser(user: User) {
     this.users.unshift(user);
+    this.saveToLocalStorage();
+  }
+
+  saveToLocalStorage() {
+    localStorage.setItem("users", JSON.stringify(this.users));
+  }
+
+  getFromLocalStorage(): User[] {
+    return JSON.parse(localStorage.getItem("users"));
   }
 
 

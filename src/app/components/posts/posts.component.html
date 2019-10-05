@@ -1,12 +1,11 @@
-<app-post-form></app-post-form>
+<app-post-form [isEdit]="isEdit" [selectedPost]="selectedPost" (newPost)="onNewPost($event)" (updatedPost)="onUpdatePost($event)"></app-post-form>
 <h2 class="mb-3">Posts</h2>
 <div class="card card-body mb-3" *ngFor="let post of posts">
-    <a><h3>{{post.title}}</h3></a>
+    <a routerLink="/post/{{post.id}}" routerLinkActive="router-link-active" class="text-decoration-none"><h3>{{post.title}}</h3></a>
     <p>{{post.body}}</p>
     <hr>
     <div>
-        <button class="btn btn-light mb-3"><i class="fa fa-trash"></i></button>
-        <button class="btn btn-light"><i class="fa fa-pencil"></i></button>
+        <button class="btn btn-light mr-3" (click)="deletePost(post)"><i class="fa fa-trash"></i></button>
+        <button class="btn btn-light" (click)="editPost(post)"><i class="fa fa-pencil"></i></button>
     </div>
-    
 </div>

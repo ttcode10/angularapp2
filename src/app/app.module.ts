@@ -1,6 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, FormGroup, FormControl } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +14,8 @@ import { PostsComponent } from './components/posts/posts.component';
 import { LogFormComponent } from './components/log-form/log-form.component';
 import { LogsComponent } from './components/logs/logs.component';
 import { LoglistComponent } from './components/loglist/loglist.component';
+import { PostComponent } from './components/post/post.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,12 +27,15 @@ import { LoglistComponent } from './components/loglist/loglist.component';
     PostsComponent,
     LogFormComponent,
     LogsComponent,
-    LoglistComponent
+    LoglistComponent,
+    PostComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
